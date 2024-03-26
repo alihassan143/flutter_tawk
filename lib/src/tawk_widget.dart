@@ -49,12 +49,14 @@ class _TawkState extends State<Tawk> {
     if (Platform.isIOS) {
       javascriptString = '''
         Tawk_API = Tawk_API || {};
+        Tawk_API.setAttributes($json);
         Tawk_API.visitor = $json;
       ''';
     } else {
       javascriptString = '''
         Tawk_API = Tawk_API || {};
         Tawk_API.onLoad = function() {
+          Tawk_API.setAttributes($json);
           Tawk_API.visitor = $json;
         };
       ''';
